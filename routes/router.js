@@ -10,6 +10,7 @@ import { UserDetails } from "../controllers/IsUserLoggedIn.js";
 import { SaveSnippets } from "../controllers/SaveSnippets.js";
 import { GetAllSnippets } from "../controllers/GetAllSnippets.js";
 import { GetSinglePost } from "../controllers/GetSinglePost.js";
+import { SaveComments } from "../controllers/saveComments.js";
 
 const router = Router();
 
@@ -24,4 +25,5 @@ router.get("/userInfo", UserDetails);
 router.post("/saveSnippet", SaveSnippets);
 router.get("/getAllSnippets", GetAllSnippets);
 router.get("/getSinglePost", GetSinglePost);
+router.post("/saveComment", SaveComments)
 export default router;

@@ -8,11 +8,22 @@ export async function GetSinglePost(req, res){
                 id: id, // Ensure 'id' is defined and valid
             },
             include: {
-                author: { // Assuming 'author' is a relation in your 'postSnippet' model
-                    select: { // Use 'select' to specify which fields to return
-                        name: true, // This retrieves the author's name
+                author: { // Including the author's details
+                    select: {
+                        name: true,
+                        id: true
                     },
                 },
+                comments: { // Including comments and their related author
+                    include: {
+                        author: { // Include the author of the comment
+                            select: {
+                                name: true,
+                                id: true
+                            }
+                        }
+                    }
+                }
             },
         });
         
