@@ -31,7 +31,7 @@ export async function UserDetails(req, res) {
     .json({ msg: "User not available", status: false });
   }
 
-
+  console.log(findUser);
 
   return res
     .status(200)

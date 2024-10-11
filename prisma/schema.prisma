@@ -8,20 +8,37 @@ datasource db {
 }
 
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  name     String   
-  email    String
-  password  String
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  name            String
+  email           String
+  password        String
   verificationOtp String
-  verified   Boolean @default(false)
-  snippetPosts PostSnippet[]
+  verified        Boolean       @default(false)
+  snippetPosts    PostSnippet[]
+  comments        Comment[]
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
-model PostSnippet{
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
-  programmingLanguage    String
-  code     String
-  description   String?
-  author   User      @relation(fields: [authorId], references: [id])
-  authorId String    @db.ObjectId
+model PostSnippet {
+  id                  String    @id @default(auto()) @map("_id") @db.ObjectId
+  programmingLanguage String
+  code                String
+  question            String?
+  author              User      @relation(fields: [authorId], references: [id])
+  authorId            String    @db.ObjectId
+  comments            Comment[] @relation("SnippetComments")
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+}
+
+model Comment {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  content     String
+  post        PostSnippet @relation(fields: [postId], references: [id], name: "SnippetComments")
+  postId      String    @db.ObjectId
+  author      User      @relation(fields: [authorId], references: [id])
+  authorId    String    @db.ObjectId
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }

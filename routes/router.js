@@ -6,7 +6,10 @@ import { VerifyForgotPassword } from "../controllers/VerifyForgotPassword.js";
 import { VerifyEmailAtForgotPassword } from "../controllers/VerifyEmailAtForgotPassword.js";
 import { ChangePasswordAtLogin } from "../controllers/ChangePassword.js";
 import { LoginUser } from "../controllers/LoginUser.js";
-import { UserDetails } from "../controllers/isUserLoggedIn.js";
+import { UserDetails } from "../controllers/IsUserLoggedIn.js";
+import { SaveSnippets } from "../controllers/SaveSnippets.js";
+import { GetAllSnippets } from "../controllers/GetAllSnippets.js";
+import { GetSinglePost } from "../controllers/GetSinglePost.js";
 
 const router = Router();
 
@@ -17,5 +20,8 @@ router.put("/verifyForgotPassword", VerifyForgotPassword);
 router.put("/verifyEmailAtForgotPassword", VerifyEmailAtForgotPassword);
 router.put("/ChangePasswordAtLogin", ChangePasswordAtLogin);
 router.post("/LoginUser", LoginUser);
-router.get("/userInfo", UserDetails)
+router.get("/userInfo", UserDetails);
+router.post("/saveSnippet", SaveSnippets);
+router.get("/getAllSnippets", GetAllSnippets);
+router.get("/getSinglePost", GetSinglePost);
 export default router;
