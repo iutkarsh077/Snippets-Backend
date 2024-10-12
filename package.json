@@ -30,7 +30,7 @@
     "prisma": "^5.20.0"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=18"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.7"
