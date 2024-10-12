@@ -44,8 +44,9 @@ export async function LoginUser(req, res){
           res.cookie("snippets", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "strict", 
+            sameSite: "none", 
             maxAge: 24 * 60 * 60 * 1000 * 15, 
+            domain: "http://localhost:4173"
           });
 
         return res.status(200).json({msg: "LoggedIn successfully", status: true})
