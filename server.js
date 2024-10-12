@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: ["http://localhost:4173", "https://snippets-frontend-beta.vercel.app"],
+    origin: "http://localhost:4173",
     credentials: true
 }))
 

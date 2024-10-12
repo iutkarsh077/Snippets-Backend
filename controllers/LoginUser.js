@@ -42,11 +42,11 @@ export async function LoginUser(req, res){
           );
       
           res.cookie("snippets", token, {
-            httpOnly: true,
+            // httpOnly: true,
             // secure: process.env.NODE_ENV === "production", 
             sameSite: "None", 
             maxAge: 24 * 60 * 60 * 1000 * 15, 
-            domain: "http://localhost:4173"
+            domain: "localhost"
           });
 
         return res.status(200).json({msg: "LoggedIn successfully", status: true})
