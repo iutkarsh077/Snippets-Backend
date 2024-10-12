@@ -41,14 +41,16 @@ export async function LoginUser(req, res){
             { expiresIn: "15d" } 
           );
       
-          res.cookie("snippets", token, {
+          const cookie = res.cookie("snippets", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", 
-            sameSite: "None", 
-            maxAge: 24 * 60 * 60 * 1000 * 15, 
-            domain: "snippets-frontend-beta.vercel"
+            sameSite: process.env.NODE_ENV === "production" ? "None" : "Strict", 
+            maxAge: 24 * 60 * 60 * 1000 * 15,
+            domain: process.env.NODE_ENV === "production" ? "snippets-frontend-beta.vercel.app" : "localhost"
           });
-
+          
+        // domain: "localhost"
+        console.log(cookie)
         return res.status(200).json({msg: "LoggedIn successfully", status: true})
     } catch (error) {
         return res.status(500).json({msg: "Internal server error", status: false})
