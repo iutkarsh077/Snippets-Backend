@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: '*'
+    origin: ['https://snippets-frontend-beta.vercel.app', 
+        'https://snippets-frontend.onrender.com'
+    ]
 }))
 
 //['https://snippets-fornt.netlify.app', 'https://snippets-frontend-beta.vercel.app']
