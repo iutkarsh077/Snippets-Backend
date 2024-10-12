@@ -11,7 +11,8 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: '*'
+    origin: '*',
+    credentials: true
 }))
 
 //['https://snippets-fornt.netlify.app', 'https://snippets-frontend-beta.vercel.app']
