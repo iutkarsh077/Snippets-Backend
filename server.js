@@ -11,9 +11,10 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin: ['https://snippets-fornt.netlify.app', 'https://snippets-frontend-beta.vercel.app']
+    origin: '*'
 }))
 
+//['https://snippets-fornt.netlify.app', 'https://snippets-frontend-beta.vercel.app']
 app.get("/api", (req, res)=>{
     console.log("Hii This is a Backend Call");
     return res.json("Hii This is a Backend Call");
