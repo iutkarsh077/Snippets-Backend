@@ -11,6 +11,10 @@ import { SaveSnippets } from "../controllers/SaveSnippets.js";
 import { GetAllSnippets } from "../controllers/GetAllSnippets.js";
 import { GetSinglePost } from "../controllers/GetSinglePost.js";
 import { SaveComments } from "../controllers/saveComments.js";
+import { SaveChat } from "../controllers/saveChat.js";
+import { GetChat } from "../controllers/GetChat.js";
+import { AskfromAi } from "../controllers/AiBackend.js";
+import { GetPostByProfile } from "../controllers/GetPostByProfile.js";
 
 const router = Router();
 
@@ -25,5 +29,10 @@ router.get("/userInfo", UserDetails);
 router.post("/saveSnippet", SaveSnippets);
 router.get("/getAllSnippets", GetAllSnippets);
 router.get("/getSinglePost", GetSinglePost);
-router.post("/saveComment", SaveComments)
+router.post("/saveComment", SaveComments);
+router.post("/saveChat", SaveChat);
+router.post("/getChat", GetChat);
+router.post("/askfromai", AskfromAi);
+router.get("/getPostByProfile", GetPostByProfile);
+
 export default router;

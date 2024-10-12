@@ -16,8 +16,9 @@ model User {
   verified        Boolean       @default(false)
   snippetPosts    PostSnippet[]
   comments        Comment[]
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
+  chats           Chat[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 }
 
 model PostSnippet {
@@ -33,12 +34,22 @@ model PostSnippet {
 }
 
 model Comment {
-  id          String    @id @default(auto()) @map("_id") @db.ObjectId
-  content     String
-  post        PostSnippet @relation(fields: [postId], references: [id], name: "SnippetComments")
-  postId      String    @db.ObjectId
-  author      User      @relation(fields: [authorId], references: [id])
-  authorId    String    @db.ObjectId
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
+  id        String      @id @default(auto()) @map("_id") @db.ObjectId
+  content   String
+  post      PostSnippet @relation(fields: [postId], references: [id], name: "SnippetComments")
+  postId    String      @db.ObjectId
+  author    User        @relation(fields: [authorId], references: [id])
+  authorId  String      @db.ObjectId
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model Chat {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  text       String
+  sender     User     @relation(fields: [senderId], references: [id])
+  senderId   String   @db.ObjectId
+  receiverId String   @db.ObjectId
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
 }
