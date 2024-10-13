@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import prisma from "../prisma/index.js";
 export async function UserDetails(req, res) {
-   const token = await req.cookies.snippets;
+   const token = req.cookies.snippets;
 
   if (!token) {
     return res.status(401).json({ msg: "Cookie not available", status: false });
